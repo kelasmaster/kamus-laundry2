@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content='${data.extract || 'Kata kamus laundry belum disususn .'}' name='description'/>
+  <title>${data.title} - Kamus Laundry</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Kamus Laundry</h1>
+    <p>Cari istilah terkait laundry:</p>
+    <input type="text" id="searchInput" placeholder="Contoh: mesin cuci" />
+    <button id="searchButton">Cari</button>
+    <div id="result"></div>
+  </div>
+  <script>
+    function fetchDescription(query) {
+  fetch(`/api/search?q=${encodeURIComponent(query)}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Istilah tidak ditemukan.');
+      }
+      return response.json();
+    })
+    .then(data => {
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = `
+        <h3>${data.title}</h3>
+        <p>${data.extract || 'Deskripsi tidak tersedia.'}</p>
+      `;
+    })
+    .catch(error => {
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = `<p style="color: red;">${error.message}</p>`;
+    });
+}
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
