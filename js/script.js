@@ -1,4 +1,6 @@
-document.getElementById('searchButton').addEventListener('click', () => {
+document.getElementById('searchForm').addEventListener('submit', (event) => {
+  event.preventDefault(); // Prevent form submission
+
   const query = document.getElementById('searchInput').value.trim();
   if (query) {
     fetchDescription(query);
@@ -7,11 +9,8 @@ document.getElementById('searchButton').addEventListener('click', () => {
   }
 });
 
-// EN const apiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`;
-// ID const apiUrl = `https://id.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`;
-
 function fetchDescription(query) {
-  const apiUrl = `https://id.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`;
+  const apiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`;
   
   fetch(apiUrl)
     .then(response => {
