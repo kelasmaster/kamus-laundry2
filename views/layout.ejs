@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="<%= description %>">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Kamus Laundry</h1>
+    <p>Cari istilah terkait laundry:</p>
+    <form action="/kamus-laundry/search" method="GET">
+      <input type="text" name="q" placeholder="Contoh: mesin cuci" required />
+      <button type="submit">Cari</button>
+    </form>
+    <div id="result">
+      <%= content %>
+    </div>
+  </div>
+  <script src="/js/script.js"></script>
+</body>
+</html>
