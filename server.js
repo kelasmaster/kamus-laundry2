@@ -50,3 +50,13 @@ app.get('/kamus-laundry/:term', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+// Handle search redirection
+app.get('/kamus-laundry/search', (req, res) => {
+  const query = req.query.q.trim().toLowerCase();
+  if (query) {
+    res.redirect(`/kamus-laundry/${encodeURIComponent(query)}`);
+  } else {
+    res.redirect('/kamus-laundry');
+  }
+});
