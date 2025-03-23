@@ -23,7 +23,7 @@ app.get('/kamus-laundry', (req, res) => {
 // Dynamic route for individual terms
 app.get('/kamus-laundry/:term', async (req, res) => {
   const term = req.params.term;
-  const apiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`;
+  const apiUrl = `https://id.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`;
 
   try {
     const response = await axios.get(apiUrl);
