@@ -10,7 +10,7 @@ document.getElementById('searchForm').addEventListener('submit', (event) => {
 });
 
 function fetchDescription(query) {
-  const apiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`;
+  const apiUrl = `https://id.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`;
   
   fetch(apiUrl)
     .then(response => {
